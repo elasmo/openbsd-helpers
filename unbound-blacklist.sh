@@ -155,7 +155,7 @@ main() {
 
     # Log
     logger "$SCRIPT_NAME: Updated $BLACKLIST_CONF with $(wc -l $_tmpsorted | \
-        awk '{print $1}') entries." 
+        awk '{print $1}') entries"
 }
 
 main "$@"
