@@ -12,6 +12,7 @@
 #
 # Include the blacklist configuration in the "server:" clause in your unbound
 # configuration.
+# 
 # server:
 #     include "/var/unbound/etc/blacklist.conf"
 # 
