@@ -20,6 +20,12 @@ PATTERN="^([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])(\.([a-zA-Z0-9]
 BLACKLIST_CONF="$UNBOUND_CHROOT/etc/blacklist.conf"
 SCRIPT_NAME="$(basename $0)"
 
+# Custom list
+# Add custom domains here
+CUSTOM_BLACKLIST=$(cat << EOF
+my.callhome.iot.trash.com
+EOF
+)
 # Feed list
 # Expects file to contain one domain per line, else $PATTERN wont match.
 # Add '#' to beginning of line to disalba a feed.
@@ -126,6 +132,13 @@ main() {
             echo "local-zone: \"$name\" always_nxdomain" >> $BLACKLIST_CONF
         fi
     done < $_tmpsorted
+
+    # Add custom domains
+    # TODO: this is a hack, fix this.
+    for name in $CUSTOM_BLACKLIST; do
+        echo "local-zone: \"$name\" always_nxdomain" >> $BLACKLIST_CONF
+    done
+
 
     # Check configuration syntax. Empty blacklist and bail out on error
     if ! doas -u $UNBOUND_USER unbound-checkconf 1>/dev/null; then
