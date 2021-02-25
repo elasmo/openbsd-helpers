@@ -141,7 +141,6 @@ main() {
         echo "local-zone: \"$name\" always_nxdomain" >> $BLACKLIST_CONF
     done
 
-
     # Check configuration syntax. Empty blacklist and bail out on error
     if ! doas -u $UNBOUND_USER unbound-checkconf 1>/dev/null; then
         echo > $BLACKLIST_CONF
