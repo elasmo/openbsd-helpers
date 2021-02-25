@@ -26,6 +26,7 @@ CUSTOM_BLACKLIST=$(cat << EOF
 my.callhome.iot.trash.com
 EOF
 )
+
 # Feed list
 # Expects file to contain one domain per line, else $PATTERN wont match.
 # Add '#' to beginning of line to disalba a feed.
