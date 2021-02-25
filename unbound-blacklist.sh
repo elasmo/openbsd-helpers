@@ -134,7 +134,8 @@ main() {
     done < $_tmpsorted
 
     # Add custom domains
-    # TODO: this is a hack, fix this.
+    # TODO: this is a hack. Fix this and include in domain validation before
+    # adding
     for name in $CUSTOM_BLACKLIST; do
         echo "local-zone: \"$name\" always_nxdomain" >> $BLACKLIST_CONF
     done
