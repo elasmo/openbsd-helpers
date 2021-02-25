@@ -9,8 +9,13 @@
 # Installs the script in /usr/local/bin, adds script user, adds necessary 
 # privilege escalation rules to doas.conf, installs crontab and creates keys 
 # for unbound-control.
+#
+# Include the blacklist configuration in the "server:" clause in your unbound
+# configuration.
+# server:
+#     include "/var/unbound/etc/blacklist.conf"
 # 
-# Manual:
+# To execute the script manually:
 # doas -u _blacklist sh /usr/local/bin/unbound-blacklist.sh
 #
 USER="_blacklist"
