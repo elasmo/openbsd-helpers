@@ -22,7 +22,7 @@ SCRIPT_NAME="$(basename $0)"
 
 # Feed list
 # Expects file to contain one domain per line, else $PATTERN wont match.
-# Add '#' to beginning of line to temporary disable feed.
+# Add '#' to beginning of line to disalba a feed.
 URLS=$(cat << EOF
 https://pgl.yoyo.org/adservers/serverlist.php?hostformat=plain&showintro=0&mimetype=plaintext
 https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
