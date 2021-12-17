@@ -10,7 +10,7 @@
 # 4. install -m 600 -o $PFBLOCK_USER -g $PFBLOCK_USER /dev/null "$BLACKLIST"
 # 5. Configure pf.conf:
 #    table <geoipblock> persist file "/etc/pf.geoipblock"
-#    block in quick on egress from <geoipblock> 
+#    block quick on egress from <geoipblock> 
 #
 set -e
 
@@ -36,8 +36,5 @@ done
 
 > "$BLACKLIST"
 sort -u $_tmpbuf > "$BLACKLIST"
-rm $_tmpbuf
-
 doas -u $PFBLOCK_USER pfctl -t "$PF_TABLE" -T replace -f "$BLACKLIST"
-
 logger "$BLACKLIST: updated"
